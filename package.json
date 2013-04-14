@@ -16,5 +16,9 @@
     "node"
   ],
   "author": "Casen Davis",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "csv": "~0.3.0"
+  }
 }
