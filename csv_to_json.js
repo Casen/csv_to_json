@@ -7,12 +7,12 @@ var args = process.argv.splice(2);
 var headerRow;
 
 csv()
-.from.stream(fs.createReadStream(__dirname+'/' + args[0] + '.csv'))
+.from.stream(fs.createReadStream(args[0] + '.csv'))
 .to(function(content){
 
   //write the content into a file as an array of json objects
   var out = "[" + content.slice(0,-1) + "]";
-  var fileName = __dirname +'/' + args[0] + '.json';
+  var fileName = args[0] + '.json';
 
   fs.writeFileSync(fileName, out);
 })
