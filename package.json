@@ -1,0 +1,20 @@
+{
+  "name": "csv_to_json",
+  "version": "0.0.0",
+  "description": "A commandline utility to read CSV files, and output them into a json file which contains an array of json objects for reach row in the CSV.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Casen/csv_to_json.git"
+  },
+  "keywords": [
+    "csv",
+    "json",
+    "node"
+  ],
+  "author": "Casen Davis",
+  "license": "BSD"
+}
