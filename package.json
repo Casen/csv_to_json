@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "A commandline utility to read CSV files, and output them into a json file which contains an array of json objects for reach row in the CSV.",
   "bin": "csv_to_json.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
