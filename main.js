@@ -37,17 +37,24 @@ module.exports = {
 
     //write the content into a file as an array of json objects
     var out = "[" + content.slice(0,-1) + "]";
-    var fileName = this.filename + '.json';
+    var fileName = this.filename.replace(/\.[a-zA-Z]+$/, '.json'); //replace .csv with .json
+    console.log('writing file: ', fileName);
 
     fs.writeFileSync(fileName, out);
+    this.callback(fileName);
   },
-  convert: function(filename, outputFunc, transformFunc){
+  convert: function(filename, callback, options){
     this.filename = filename;
-    outputFunc = (typeof outputFunc == "function") ? outputFunc : this.defaultOut;
-    transformFunc = (typeof transformFunc == "function") ? transformFunc : this.defaultTransform;
+    this.callback = (typeof callback == "function") ? callback : function(){};
+    options = (typeof options == "object") ? options : {};
+
+    outputFunc = (typeof options.outputFunc == "function") ? options.outputFunc : this.defaultOut;
+    transformFunc = (typeof options.transformFunc == "function") ? options.transformFunc : this.defaultTransform;
+
     csv()
-    .from.stream(fs.createReadStream(this.filename + '.csv'))
+    .from.stream(fs.createReadStream(this.filename))
     .to(outputFunc.bind(this))
     .transform(transformFunc.bind(this));
+
   }
 }
